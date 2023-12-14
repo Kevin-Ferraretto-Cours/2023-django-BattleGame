@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}PvE{% endblock %}
+
+{% block content %}
+    <div class="pt-5">
+        <a class="text-sm mx-5 mt-5 font-semibold bg-[#e13d3d] px-8 py-2 rounded-full text-white" href="{% url 'chooseMode' %}">Retour</a>
+        <div class="flex justify-around">
+            <div class="flex flex-col items-center">
+                <p class="font-bold">Vous</p>
+                <p>Pseudo: {{ character.name }}</p> 
+                <p>HP: {{ character.hp }}/{{ character_maxhp }}</p>
+                {% if state.typePersonnage == "Barbarian" or state.typePersonnage == "Paladin" %}
+                    <p>Rage: {{ character.rage }}/{{ max_rage }}</p>
+                {% else %}
+                    <p>Mana: {{ character.mana }}/{{ max_mana }}</p>
+                {% endif %}
+            </div>
+            <div class="flex flex-col items-center">
+                <p class="font-bold">Enemy</p>
+                <p>Pseudo: {{ enemy.name }}</p> 
+                <p>HP: {{ state.enemyHp }}/{{ state.enemyMaxHp }}</p>
+            </div>
+        </div>
+        <p class="text-center">Action</p>
+        <div class="flex justify-around mt-6 mb-6">
+            {% if state.enemyHp > 0 and character.hp > 0 %}
+                {% if character.tokensAvailable == None %}
+                    <div class="flex flex-col items-center">
+                        <a class="text-sm mx-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'tokenAttack' %}">Tokens</a>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <a class="text-sm mx-5 mt-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'handAttack' %}">Hand</a>
+                    </div>
+                {% else %}
+                    <div class="flex items-center">
+                        <a class="text-sm mx-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'handAttack' %}">Hand</a>
+                        {% for k in character.tokens.all %}
+                            {% if state.typePersonnage == "Barbarian" or state.typePersonnage == "Paladin" %}
+                                {% if character.rage >= k.cost %}
+                                    <a class="text-sm mx-5 font-semibold bg-[#808080] px-8 py-2 rounded-full text-white" href="{% url 'useToken' k.id %}">{{ k.name }}</a>
+                                {% endif %}
+                            {% else %}
+                                {% if character.mana >= k.cost %}
+                                    <a class="text-sm mx-5 font-semibold bg-[#808080] px-8 py-2 rounded-full text-white" href="{% url 'useToken' k.id %}">{{ k.name }}</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% elif state.enemyHp <= 0 %}
+                <div class="flex flex-col items-center">
+                    <p class="text-emerald-300 text-3xl">Vous avez gagner</p>
+                    <a class="text-sm mx-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'clearGame' %}">Cliquer içi pour sortir</a>
+                </div>
+            {% elif character.hp <= 0 %}
+                <div class="flex flex-col items-center">
+                    <p class="text-red-500 text-3xl">Vous avez perdu</p>
+                    <a class="text-sm mx-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'clearGame' %}">Cliquer içi pour sortir</a>
+                </div>
+            {% endif %}
+        </div>
+        <p class="text-center">Historique</p>
+        <div class="flex justify-around mt-6">
+            <div class="flex flex-col items-center">
+                {% for k, v in state.historique.items %}
+                    <p>{{ v }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

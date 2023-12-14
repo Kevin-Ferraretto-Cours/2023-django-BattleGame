@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Choose mode{% endblock %}
+
+{% block content %}
+<div class="pt-5">
+    <a class="text-sm mx-5 mt-5 font-semibold bg-[#e13d3d] px-8 py-2 rounded-full text-white" href="{% url 'home' %}">Retour</a>
+    <div class="flex flex-col items-center">
+            <a class="text-sm mx-5 mt-5 font-semibold bg-[#8f912a] px-8 py-2 rounded-full text-white" href="{% url 'pvp' %}">Arena (Player)</a>
+            <a class="text-sm mx-5 mt-5 font-semibold bg-[#c03de1] px-8 py-2 rounded-full text-white" href="{% url 'pve' %}">Arena (Mob)</a>
+            <a class="text-sm mx-5 mt-5 font-semibold bg-[#6cfaff] px-8 py-2 rounded-full text-white" href="{% url 'inventory' %}">Inventaire</a>
+    </div>
+</div>
+    
+{% endblock %}

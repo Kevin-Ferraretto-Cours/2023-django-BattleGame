@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}PvE{% endblock %}
+
+{% block content %}
+    <div class="pt-5">
+        <a class="text-sm mx-5 mt-5 font-semibold bg-[#e13d3d] px-8 py-2 rounded-full text-white" href="{% url 'chooseMode' %}">Retour</a>
+        <div class="flex flex-col items-center">
+            <h2>Choisir la difficulté</h2>
+            <form method="post" action="{% url 'generateMonster' %}">
+                {% csrf_token %}
+                {{ form }}
+            <button type="submit">Create</button>
+            </form>
+            
+        </div>
+    </div>
+{% endblock %}

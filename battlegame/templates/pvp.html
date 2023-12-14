@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}PvP{% endblock %}
+
+{% block content %}
+    <div class="pt-5">
+        <a class="text-sm mx-5 mt-5 font-semibold bg-[#e13d3d] px-8 py-2 rounded-full text-white" href="{% url 'chooseMode' %}">Retour</a>
+        <div class="flex flex-col items-center">
+            {{ logged_in_users }}
+        </div>
+    </div>
+{% endblock %}

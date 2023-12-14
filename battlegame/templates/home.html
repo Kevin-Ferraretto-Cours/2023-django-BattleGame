@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <div class="flex flex-col items-center">
+    {% if user.is_authenticated %}
+      <p class="text-2xl text-center mb-4">Bonjour {{ user.username }}!</p> 
+      {% if has_account %}
+        <a class="text-sm mx-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'chooseMode' %}">Play</a>
+      {% else %}
+        <a class="text-sm mx-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'createCharacter' %}">New Game</a>
+      {% endif %}
+        <a class="text-sm mx-5 mt-5 font-semibold bg-[#e13d3d] px-8 py-2 rounded-full text-white" href="{% url 'logout' %}">Log Out</a>
+    {% else %}
+      <p class="text-2xl text-center mb-4">You are not logged in</p>
+      <a class="text-sm mx-5 font-semibold bg-[#3de143] px-8 py-2 rounded-full text-white" href="{% url 'login' %}">Log In</a>
+    {% endif %}
+  </div>
+{% endblock %}
