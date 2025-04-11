@@ -1,24 +1,70 @@
-# BattleGame - Mini RPG en Django
+# BattleGame
 
-Bienvenue dans BattleGame, un projet Django captivant développé en duo ! BattleGame est un mini-RPG où chaque joueur peut créer un compte, s'équiper d'armes et d'armures, puis se battre contre des adversaires prérégler ou affronter d'autres joueurs en combats en écran partagé.
+Un mini RPG développé avec Django permettant aux joueurs de créer des comptes, personnaliser leurs personnages, et participer à des combats PvE et PvP en écran partagé.
 
-## Aperçu
+## 📋 Description
 
-BattleGame offre une expérience RPG unique avec un système de login, permettant à chaque joueur de créer et personnaliser son personnage.
+BattleGame est un jeu de rôle web développé avec Django qui offre une expérience immersive où les joueurs peuvent créer leurs propres comptes, personnaliser leurs personnages, acquérir de l'équipement et participer à des combats stratégiques contre des adversaires prédéfinis ou d'autres joueurs en mode écran partagé.
 
-## Fonctionnalités
+## ✨ Fonctionnalités
 
-- **Système de Login :** Chaque joueur peut créer un compte, se connecter, et sauvegarder la progression de son personnage.
+- **Système d'Authentification** - Création de compte, connexion et sauvegarde de progression
+- **Création et Personnalisation** - Développez un personnage unique avec ses propres attributs
+- **Équipement Stratégique** - Choisissez parmi différentes armes et armures pour optimiser votre style de combat
+- **Combat PvE** - Affrontez des adversaires prédéfinis aux comportements et difficultés variés
+- **Duels PvP** - Défiez d'autres joueurs en mode écran partagé pour déterminer le champion ultime
+- **Interface Web Réactive** - Expérience utilisateur fluide et immersive
 
-- **Personnalisation du Personnage :** Équipez votre personnage avec des armes et des armures pour améliorer ses compétences et sa puissance.
+## 🚀 Installation
 
-- **Combats contre des Adversaires Prérégler :** Affrontez des ennemis prédéfinis.
+```bash
+# Cloner le dépôt
+git clone https://github.com/Kevin-Ferraretto-Cours/2023-django-BattleGame.git
 
-- **Combats Joueur contre Joueur (PvP) :** Défiez d'autres joueurs en combats en écran partagé pour prouver qui est le véritable champion.
+# Accéder au répertoire
+cd 2023-django-BattleGame
 
-## Comment Utiliser
+# Installation des dépendances
+pip install -r requirements.txt
 
-1. Clonez le repository sur votre machine locale.
-2. Configurez votre environnement Django.
-3. Lancez le serveur Django et ouvrez le jeu dans votre navigateur.
-4. Connectez-vous, créez votre personnage, et lancez-vous dans des batailles épiques.
+# Configurer la base de données
+python manage.py migrate
+```
+
+## 🎮 Utilisation
+
+```bash
+# Lancer le serveur de développement
+python manage.py runserver
+
+# Accéder à l'application dans votre navigateur à l'adresse
+# http://127.0.0.1:8000/
+```
+
+## 📝 Configuration
+
+Vous pouvez modifier les paramètres de l'application dans le fichier `settings.py`.
+
+Pour un déploiement en production, n'oubliez pas de :
+- Définir `DEBUG = False`
+- Configurer une clé secrète sécurisée
+- Configurer correctement les paramètres de base de données
+
+## 🛠️ Technologies utilisées
+
+- [Django](https://www.djangoproject.com/) - Framework web Python
+- [HTML/CSS/JavaScript] - Front-end
+- [SQLite/PostgreSQL] - Base de données
+- [Tailwind]
+
+## 📈 Roadmap
+
+- Implémentation de classes de personnages supplémentaires
+- Ajout d'un système de niveaux et progression
+- Développement d'une campagne narrative
+- Intégration d'un système de commerce virtuel
+- Amélioration des graphismes et de l'interface utilisateur
+
+## 📜 Licence
+
+Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
